@@ -1,0 +1,291 @@
+//
+// Variables
+@ep-ui-color:               rgb(0,0,0);
+@ep-ui-contrast-color:      rgb(255, 194, 0);
+@minimum-ui-width:          1000px;
+
+.ep-ui-panel-shadow() {
+  box-shadow: 0 0 20px rgb(0,0,0);
+}
+
+//
+// Mixins
+// Simple float clear mixin
+.clearfix() {
+  &:after {
+    display: table;
+    clear: left;
+    content: ' ';
+  }
+}
+
+// Clears bottom spacing for content within modules, panels, wells etc. ...
+// Requires to not nest deeper than 2 levels for now.
+.module-bottom-spacing() {
+  & > *:last-child,
+  & > *:last-child > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Font
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+// Editor Layout Helper
+.is-editor-mode {
+  min-width: @minimum-ui-width;
+  margin-top: 3em;
+}
+
+//
+// UI
+.ep-ui {
+  font-family: 'Open Sans', sans-serif;
+  color: @ep-ui-color;
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  * {
+    box-sizing: inherit;
+  }
+}
+
+.ep-ui-panel {
+  background-color: @ep-ui-contrast-color;
+  .ep-ui-panel-shadow();
+  .clearfix();
+}
+
+.editor-toolbar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  padding: 1em;
+  width: 100%;
+  min-width: @minimum-ui-width;
+  background-color: rgba( red(@ep-ui-contrast-color), green(@ep-ui-contrast-color), blue(@ep-ui-contrast-color), 0.7);
+}
+
+.colors-interaction {
+    background-color: @ep-ui-color;
+    color: #fff;
+
+    &:hover {
+      background-color: @ep-ui-contrast-color;
+      color: #000;
+    }
+}
+
+//
+// Region
+.ep-region {
+  position: relative;
+  margin-bottom: 1em;
+  padding: 1em;
+
+  textarea {
+    padding: .3em;
+    border: 1px solid #ccc;
+  }
+}
+
+//
+// Tools
+.ep-region-tools {
+  display: none;
+}
+
+.show-tools {
+  padding: 0;
+
+  .ep-region-tools {
+    display: block;
+  }
+}
+
+.content-element-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  background-color: @ep-ui-color;
+
+  li {
+    cursor: pointer;
+    padding: 1em;
+    display: inline-block;
+  }
+}
+
+.add-text {
+  padding: 0;
+}
+
+.ep-content-element {
+  position: relative;
+  margin-bottom: 1.2em;
+  .module-bottom-spacing();
+
+  &:hover {
+    .change-element {
+      display: block;
+    }
+  }
+}
+
+.add-content,
+.contains-content {
+  background-color: #efefef;
+}
+
+.contains-content {
+  .module-bottom-spacing();
+
+  &.edit-content {
+    .change-element {
+      display: none;
+    }
+  }
+
+  .change-element {
+    position: absolute;
+    border-radius: 1em;
+    padding: 0.4em;
+    right: -0.6em;
+    top: -.5em;
+    line-height: .9;
+    display: none;
+  }
+}
+
+.add-image-src {
+  background-color: yellow;
+}
+
+//
+// States & helper
+.is-empty {
+  background-color: #efefef;
+  line-height: 0;
+
+  &.is-editable {
+    text-align: center;
+
+    &:hover {
+      background-color: @ep-ui-contrast-color;
+    }
+
+    &:before {
+      content:"+";
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 0;
+    }
+  }
+}
+
+.is-editable {
+  border: 1px dashed rgba( red(@ep-ui-color), green(@ep-ui-color), blue(@ep-ui-color), 0.3);
+
+  &:hover {
+    border:1px solid @ep-ui-color;
+  }
+}
+
+.on-hover-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//
+// Theme Switch
+.ep-theme-switch-panel {
+  width: 66%;
+}
+
+.ep-theme-switch-trigger {
+  float: right;
+}
+
+.theme-selection-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    position: relative;
+    float: left;
+    margin: 0;
+  }
+
+  .theme-title {
+    position: absolute;
+    bottom: 1em;
+    left: 3em;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: white;
+  }
+}
+
+//
+// # Layout grid
+
+/*
+  ## A simple 4 column grid using flexbox
+
+  Browser support: http://caniuse.com/#feat=flexbox
+
+  To be determined: breakpoint values.
+  For now each cell has a minimum width
+  roundabout 300 browser pixels.
+*/
+
+.ep-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -1em;
+  margin-left: -1em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ep-grid-cell {
+  flex: 1;
+  box-sizing: inherit;
+  padding: 0 1em;
+  margin-bottom: 1.5em;
+}
+
+.ep-grid-cell-full {
+  flex: 0 0 100%;
+  max-width: 100%; // IE needed hack
+}
+
+.ep-grid-cell-half {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.ep-grid-cell-third {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+}
+
+.ep-grid-cell-quarter {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.ep-show-grid {
+  .ep-grid-cell {
+    color: #fff;
+    background-color: #c00;
+  }
+}

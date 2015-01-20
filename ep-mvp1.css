@@ -1,0 +1,204 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+.is-editor-mode {
+  min-width: 1000px;
+  margin-top: 3em;
+}
+.ep-ui {
+  font-family: 'Open Sans', sans-serif;
+  color: #000000;
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ep-ui * {
+  box-sizing: inherit;
+}
+.ep-ui-panel {
+  background-color: #ffc200;
+  box-shadow: 0 0 20px #000000;
+}
+.ep-ui-panel:after {
+  display: table;
+  clear: left;
+  content: ' ';
+}
+.editor-toolbar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  padding: 1em;
+  width: 100%;
+  min-width: 1000px;
+  background-color: rgba(255, 194, 0, 0.7);
+}
+.colors-interaction {
+  background-color: #000000;
+  color: #fff;
+}
+.colors-interaction:hover {
+  background-color: #ffc200;
+  color: #000;
+}
+.ep-region {
+  position: relative;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+.ep-region textarea {
+  padding: .3em;
+  border: 1px solid #ccc;
+}
+.ep-region-tools {
+  display: none;
+}
+.show-tools {
+  padding: 0;
+}
+.show-tools .ep-region-tools {
+  display: block;
+}
+.content-element-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  background-color: #000000;
+}
+.content-element-list li {
+  cursor: pointer;
+  padding: 1em;
+  display: inline-block;
+}
+.add-text {
+  padding: 0;
+}
+.ep-content-element {
+  position: relative;
+  margin-bottom: 1.2em;
+}
+.ep-content-element > *:last-child,
+.ep-content-element > *:last-child > *:last-child {
+  margin-bottom: 0;
+}
+.ep-content-element:hover .change-element {
+  display: block;
+}
+.add-content,
+.contains-content {
+  background-color: #efefef;
+}
+.contains-content > *:last-child,
+.contains-content > *:last-child > *:last-child {
+  margin-bottom: 0;
+}
+.contains-content.edit-content .change-element {
+  display: none;
+}
+.contains-content .change-element {
+  position: absolute;
+  border-radius: 1em;
+  padding: 0.4em;
+  right: -0.6em;
+  top: -0.5em;
+  line-height: .9;
+  display: none;
+}
+.add-image-src {
+  background-color: yellow;
+}
+.is-empty {
+  background-color: #efefef;
+  line-height: 0;
+}
+.is-empty.is-editable {
+  text-align: center;
+}
+.is-empty.is-editable:hover {
+  background-color: #ffc200;
+}
+.is-empty.is-editable:before {
+  content: "+";
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 0;
+}
+.is-editable {
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+}
+.is-editable:hover {
+  border: 1px solid #000000;
+}
+.on-hover-pointer:hover {
+  cursor: pointer;
+}
+.ep-theme-switch-panel {
+  width: 66%;
+}
+.ep-theme-switch-trigger {
+  float: right;
+}
+.theme-selection-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.theme-selection-list li {
+  position: relative;
+  float: left;
+  margin: 0;
+}
+.theme-selection-list .theme-title {
+  position: absolute;
+  bottom: 1em;
+  left: 3em;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 300;
+  color: white;
+}
+/*
+  ## A simple 4 column grid using flexbox
+
+  Browser support: http://caniuse.com/#feat=flexbox
+
+  To be determined: breakpoint values.
+  For now each cell has a minimum width
+  roundabout 300 browser pixels.
+*/
+.ep-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -1em;
+  margin-left: -1em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ep-grid-cell {
+  flex: 1;
+  box-sizing: inherit;
+  padding: 0 1em;
+  margin-bottom: 1.5em;
+}
+.ep-grid-cell-full {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.ep-grid-cell-half {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.ep-grid-cell-third {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+}
+.ep-grid-cell-quarter {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+.ep-show-grid .ep-grid-cell {
+  color: #fff;
+  background-color: #c00;
+}
